@@ -43,7 +43,7 @@ module.exports = (env) => {
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
-      historyApiFallback: true,
+      historyApiFallback: true, // Use this to server index.html to all pages if address is not matched by file
       hot: true,
       inline: true,
       port: 8080,
