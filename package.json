@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "author": "Michał Gołębiowski",
+  "engines": {
+    "node": ">=7.0.0"
+  },
   "scripts": {
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
