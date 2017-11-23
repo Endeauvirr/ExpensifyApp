@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should ExpensesSummary component render with no expenses 1`] = `
+<div>
+  <p>
+    You do not have any expenses in this time
+  </p>
+</div>
+`;
+
+exports[`Should ExpensesSummary component render with single expense 1`] = `
+<div>
+  <p>
+    Showing 
+    2
+     
+    expenses
+     with total value of 
+    40000
+     
+  </p>
+</div>
+`;
