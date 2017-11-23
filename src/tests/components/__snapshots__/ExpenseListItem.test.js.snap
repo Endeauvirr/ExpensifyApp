@@ -16,9 +16,9 @@ exports[`Should render ExpenseListItem component with expense data provided 1`] 
     Just simple note
   </p>
   <p>
-    500
-     - 
-    0
+    $ 5.00
+     -  
+    01.01.1970
   </p>
   <hr />
   <button
