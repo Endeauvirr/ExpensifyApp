@@ -3,3 +3,6 @@
 /.DS_Store
 
 /public/dist/*
+
+.env.development
+.env.test

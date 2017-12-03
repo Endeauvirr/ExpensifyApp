@@ -12,29 +12,31 @@ import { addExpense } from './actions/expenses';
 
 import './styles/style.scss';
 
+import './firebase/firebase';
+
 const store = configureStore();
 
-store.dispatch(addExpense({ 
-  description: 'Water bill',
-  note: 'sooo much to pay ;(',
-  amount: 444400,
-  createdAt: 50000
-}));
+// store.dispatch(addExpense({   not need for default data
+//   description: 'Water bill',
+//   note: 'sooo much to pay ;(',
+//   amount: 444400,
+//   createdAt: 50000
+// }));
 
 
-store.dispatch(addExpense({ 
-  description: 'Gas bill',
-  note: 'gas is sooo cool',
-  amount: 3400,
-  createdAt: 750000
-}));
+// store.dispatch(addExpense({ 
+//   description: 'Gas bill',
+//   note: 'gas is sooo cool',
+//   amount: 3400,
+//   createdAt: 750000
+// }));
 
-store.dispatch(addExpense({
-  description: 'Power bill',
-  note: 'gas is sooo cool',
-  amount: 74050,
-  createdAt: 33456000
-}));
+// store.dispatch(addExpense({
+//   description: 'Power bill',
+//   note: 'gas is sooo cool',
+//   amount: 74050,
+//   createdAt: 33456000
+// }));
 
 const appRoot = document.getElementById('app');
 
