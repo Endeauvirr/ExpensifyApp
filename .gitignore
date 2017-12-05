@@ -3,6 +3,7 @@
 /.DS_Store
 
 /public/dist/*
+/src/playground/_old_app.js
 
 .env.development
 .env.test

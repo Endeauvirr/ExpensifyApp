@@ -8,6 +8,15 @@ test('Should set default state', () => {
   expect(state).toEqual([]);
 });
 
+test('Should set expenses', () => {
+  const state = expenseReducer(expensesDummyData, {
+    type: 'SET_EXPENSES',
+    expenses: expensesDummyData[1]
+  });
+
+  expect(state).toEqual(expensesDummyData[1]);
+});
+
 test('Should add new expense', () => {
   const newExpense = {
     id: '4',

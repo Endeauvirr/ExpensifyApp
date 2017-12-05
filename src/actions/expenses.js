@@ -17,6 +17,19 @@ import database from '../firebase/firebase';
 //   }
 // });
 
+const convertDataToArray = (snapshot) => {
+  const expensesArray = [];
+
+  snapshot.forEach((childSnapshot) => {
+    expensesArray.push({
+      id: childSnapshot.key,
+      ...childSnapshot.val()
+    });
+  });
+
+  return expensesArray;
+};
+
 export const addExpense = (expense) => ({
   type: 'ADD_EXPENSE',
   expense
@@ -62,3 +75,24 @@ export const editExpense = (id, { ...expense } = {}) => ({
     ...expense
   }
 });
+
+// SET_EXPENSES
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+});
+
+
+// START_SET_EXPENSES (async)
+
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    return database.ref('expenses')
+      .once('value')
+      .then((snapshot) => {
+        const expenses = convertDataToArray(snapshot);
+
+        dispatch(setExpenses(expenses));
+      });
+  };
+};
