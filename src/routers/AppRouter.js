@@ -1,25 +1,29 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 
-import Header from '../containers/Header';
-
+import LoginPage from '../components/LoginPage';
 import DashboardPage from '../components/DashboardPage';
 import CreateExpensePage from '../components/CreateExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
 import NotFoundPage from '../components/NotFoundPage';
+import PrivateRoute from './PrivateRoute';
 
+export const history = createHistory();
+
+// Switch to <Router>  from <BrowserRouter> in order to use custom controlled history manipulation tool
 const AppRouter = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
-      <Header />
       <Switch>
-        <Route path="/" exact component={DashboardPage} />
-        <Route path="/create" component={CreateExpensePage} />
-        <Route path="/edit/:id" component={EditExpensePage} />
+        <Route path="/" exact component={LoginPage} />
+        <PrivateRoute path="/dashboard" exact component={DashboardPage} />
+        <PrivateRoute path="/create" component={CreateExpensePage} />
+        <PrivateRoute path="/edit/:id" component={EditExpensePage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;

@@ -6,7 +6,7 @@ import ExpenseForm from './ExpenseForm';
 export class EditExpensePage extends React.Component {
   onSubmit = (expense) => {
     this.props.startEditExpense(this.props.expense.id, expense);
-    this.props.history.push('/');
+    this.props.history.push('/dashboard');
   }
   render() {
     return (
