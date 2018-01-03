@@ -1,0 +1,79 @@
+.loggedUser__header--wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  border-bottom: 1px solid $color-light-gray;
+}
+
+.header--nav-section {
+  width: auto;
+  display: flex;
+  align-items: stretch;
+  .header--logo {
+    margin: 0 30px 0 0;
+    align-self: center;
+    a {
+      @include primaryTypeface($weight: 700);
+      color: $color-rich-black;
+      text-decoration: none;
+    }
+  }
+  .header--navigation {
+    display: inline-flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-right: 1px solid $color-light-gray;
+
+    li {
+      display: flex;
+      align-items: center;
+      border-left: 1px solid $color-light-gray;
+      background: #fff;
+      box-shadow: none;
+      transition: all 0.3s linear;
+
+      &:hover {
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,0.15);
+      }
+
+      a {
+        padding: 30px;
+      }
+    }
+  }
+}
+
+.header--user-section {
+  width: auto;
+  display: flex;
+
+  .user-section {
+    &__photo {
+      width: auto;
+      display: flex;
+      align-items: center;
+      img {
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
+
+    &__name--wrapper {
+      width: auto;
+      display: grid;
+      align-self: center;
+    }
+    &__name--label {
+      @include primaryTypeface($weight: 300);
+      font-size: 0.875em;
+      width: 100%;
+      margin: 0 0 5px 0;
+    }
+    &__name {
+      @include primaryTypeface($weight: 700);
+      margin: 0;
+    }
+  }
+}

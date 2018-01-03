@@ -1,8 +1,11 @@
 @import '~normalize.css/normalize.css';
+@import './base/_fonts.scss';
 
 @import './base/_variables.scss';
 @import './base/_mixins.scss';
+@import './base/_bootstrap.scss';
 
-.is-active {
-  color: green;
-}
+@import './components/LoginPage.scss';
+
+@import './containers/PrivateRoute.scss';
+@import './containers/Header.scss';

@@ -7,10 +7,14 @@ import { Header } from '../../containers/Header';
 
 let wrapper;
 let startLogout;
+let photoURL;
+let displayName;
 
 beforeEach(() => {
   startLogout = jest.fn();
-  wrapper = shallow(<Header startLogout={() => {}} />);
+  photoURL = 'picture.jpg';
+  displayName = 'name surname';
+  wrapper = shallow(<Header startLogout={() => {}} photoURL={photoURL} displayName={displayName} />);
 });
 
 test('Should render Header container correctly', () => {

@@ -4,15 +4,15 @@ import { Route, Redirect } from 'react-router-dom';
 import Header from '../containers/Header';
 
 export const PrivateRoute = ({
- isAuthenticated,
-    component: Component,
-    ...rest
-  }) => (
+  isAuthenticated,
+  component: Component,
+  ...rest
+}) => (
   <Route
     {...rest}
     component={(props) => (
       isAuthenticated ? (
-        <div className="private-header-wrapper">
+        <div className="loggedUser--wrapper">
           <Header />
           <Component {...props} />
         </div>

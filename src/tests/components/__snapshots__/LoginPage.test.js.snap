@@ -1,14 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should LoginPage render correctly 1`] = `
-<div
-  className="login-wrapper"
+<section
+  className="login-page"
 >
-  <h1>
-    Login to Expensify
-  </h1>
-  <button>
-    Authenticate me
-  </button>
-</div>
+  <header
+    className="login-page__header--wrapper"
+  >
+    <h1>
+      Expenses Manager
+    </h1>
+  </header>
+  <div
+    className="login-page__login-panel"
+  >
+    <div
+      className="login-panel__inner-wrapper"
+    >
+      <h2>
+        Login
+      </h2>
+      <p>
+        Login to your account to manage your expenses.
+      </p>
+      <button
+        className="button-primary"
+      >
+        Authenticate me via Google
+      </button>
+    </div>
+  </div>
+</section>
 `;
