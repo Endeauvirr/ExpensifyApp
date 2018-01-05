@@ -12,7 +12,7 @@ exports[`[Event, submit] Should render error for invalid form submission 1`] = `
     </p>
     <input
       name="description"
-      onInput={[Function]}
+      onChange={[Function]}
       placeholder="Description"
       type="text"
       value=""
@@ -125,7 +125,7 @@ exports[`Should render ExpenseForm component 1`] = `
   >
     <input
       name="description"
-      onInput={[Function]}
+      onChange={[Function]}
       placeholder="Description"
       type="text"
       value=""
@@ -238,7 +238,7 @@ exports[`Should render ExpenseForm component with data 1`] = `
   >
     <input
       name="description"
-      onInput={[Function]}
+      onChange={[Function]}
       placeholder="Description"
       type="text"
       value="Ball"

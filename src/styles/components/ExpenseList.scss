@@ -1,0 +1,66 @@
+.expenses__list {
+  width: 100%;
+  margin: 40px 0;
+  border: 1px solid $color-gray;
+
+  &--header {
+    background: $color-light-gray;
+    display: grid;
+    padding: 20px;
+    grid-template-columns: calc(100% - 270px) 150px 120px;
+    grid-template-rows: auto auto auto;
+    border-bottom: 1px solid $color-gray;
+  }
+
+  &--content {
+    .no-expenses-label {
+      margin: 30px 0;
+      text-align: center;
+    }
+  }
+}
+
+.expenses__list-item {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: calc(100% - 270px) 150px 120px;
+  grid-template-rows: auto auto auto;
+  border-bottom: 1px solid $color-gray;
+
+  &:hover {
+
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .expense-item__description--wrapper {
+    align-self: center;
+
+    .expense-item__header {
+      margin: 0 0 15px 0;
+      font-size: 1.25em;
+    }
+    .expense-item__note {
+      font-size: 0.875em;
+      margin: 15px 0 0 0;
+    }
+    .expense-item__date {
+      font-size: 0.5em;
+      font-weight: 400;
+      color: $color-gray;
+    }
+  }
+
+  .expense-item__value {
+    align-self: center;
+  }
+
+  .expense-item__action {
+    align-self: center;
+    button {
+      @include button-generator($background: $color-vivid-burgundy, $color: #fff);
+    }
+  }
+}

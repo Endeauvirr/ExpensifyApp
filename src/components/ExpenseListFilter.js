@@ -6,6 +6,7 @@ import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters';
+import selectExpenses from '../selectors/expenses';
 
 export class ExpenseListFilter extends React.Component {
   state = {
@@ -35,14 +36,19 @@ export class ExpenseListFilter extends React.Component {
       <div className="expenses__list-filters">
         <input
           type="text"
+          className="list-filter__text"
           value={this.props.filters.text}
           onChange={this.onTextFilterChange}
+          placeholder="Filter by name"
+          disabled={this.props.visibleExpenses === 0}
         />
 
         <select
+          className="list-filter__type"
           name="expensesTypeFilter"
           id="expensesTypeFilter"
           onChange={this.onFilterTypeChange}
+          disabled={this.props.visibleExpenses === 0}
         >
           <option value="date" default>by date</option>
           <option value="amount">by amount</option>
@@ -63,7 +69,8 @@ export class ExpenseListFilter extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  filters: state.filters
+  filters: state.filters,
+  visibleExpenses: selectExpenses(state.expenses, state.filters).length
 });
 
 const mapDispatchToProps = (dispatch) => ({

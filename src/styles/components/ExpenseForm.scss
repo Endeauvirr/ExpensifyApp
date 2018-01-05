@@ -1,0 +1,61 @@
+.expense-form__wrapper {
+  .expense-form__header {
+    width: 100%;
+    h2 {
+      @include primaryTypeface($weight: 300);
+      font-size: 2em;
+      margin: 50px 0;
+      text-align: center;
+    }
+  }
+}
+
+.expenses__create-expense--form {
+  form {
+    width: 50%;
+    margin: 0 auto;
+
+    @include breakpoint(to-desktop) {
+      width: 75%;
+    }
+    @include breakpoint(to-mobile) {
+      width: 90%;
+    }
+  }
+  .expense-form__input--wrapper {
+    width: 100%;
+    margin-bottom: 25px;
+    label {
+      width: 100%;
+      display: block;
+      font-size: 0.75em;
+      @include primaryTypeface($weight: 700);
+      margin-bottom: 10px;
+    }
+    .default-form-control {
+      border: 1px solid $color-gray;
+      padding: 15px;
+      width: 100%;
+      outline: none;
+      transition: border 0.3s linear;
+      &:hover {
+        border: 1px solid $color-vivid-cerulean;
+      }
+      &:focus {
+        border: 1px solid $color-prussian-blue;
+      }
+    }
+    textarea {
+      min-height: 120px;
+    }
+    .default-form-submit {
+      @include button-generator($background: $color-cerulean, $color: #fff);
+    }
+  }
+
+  .expense-form__error-message {
+    @include primaryTypeface($weight: 700);
+    margin: 0 0 30px 0;
+    color: $color-vivid-burgundy;
+  }
+}

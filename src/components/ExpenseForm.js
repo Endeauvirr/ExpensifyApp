@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
+import formatPrice from '../utils/formatPrice';
 
 class ExpenseForm extends React.Component {
   constructor(props) {
@@ -13,7 +15,8 @@ class ExpenseForm extends React.Component {
       note: props.expense ? props.expense.note : '',
       createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       calendarFocused: false,
-      formValidationError: false
+      formValidationError: false,
+      formattedPrice: props.expense ? props.expense.amount : 0
     }
   }
   componentDidMount() {
@@ -24,7 +27,8 @@ class ExpenseForm extends React.Component {
         description,
         note,
         amount: (amount / 100).toString(),
-        createdAt: moment(createdAt)
+        createdAt: moment(createdAt),
+        formattedPrice: formatPrice(amount)
       }));
     }
   }
@@ -42,7 +46,8 @@ class ExpenseForm extends React.Component {
 
     if (!formFieldValue || formFieldValue.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({
-        [formFieldName]: formFieldValue
+        [formFieldName]: formFieldValue,
+        formattedPrice: formatPrice(parseFloat(formFieldValue, 10) * 100)
       }))
     }
   }
@@ -95,44 +100,69 @@ class ExpenseForm extends React.Component {
     return (
       <div className="expenses__create-expense--form">
         <form onSubmit={this.onSubmitHandler}>
-          {this.state.formValidationError && <p>Please fill description and amount fields</p>}
-          <input
-            type="text"
-            name="description"
-            placeholder="Description"
-            value={this.state.description}
-            onInput={this.onStringElementChange}
-          />
-          <input
-            type="text"
-            name="amount"
-            placeholder="Amount"
-            value={this.state.amount}
-            onFocus={this.onAmountElementFocus}
-            onChange={this.onAmountElementChange}
-          />
-          <SingleDatePicker
-            date={this.state.createdAt}
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onCalendarFocused}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          />
-          <textarea
-            name="note"
-            placeholder="Place a note for expense (optional)"
-            onInput={this.onStringElementChange}
-          />
-          <button
-            type="submit"
-          >
-            {(this.props.expense) ? 'Edit expense' : 'Create expense'}
-          </button>
+          {this.state.formValidationError && <p className="expense-form__error-message">Please fill description and amount fields</p>}
+          <div className="expense-form__input--wrapper">
+            <label>Expense description</label>
+            <input
+              type="text"
+              name="description"
+              className="default-form-control"
+              placeholder="Description"
+              value={this.state.description}
+              onChange={this.onStringElementChange}
+            />
+          </div>
+          <div className="expense-form__input--wrapper">
+            <label>Expense value - {this.state.formattedPrice}</label>
+            <input
+              type="text"
+              name="amount"
+              placeholder="Amount"
+              className="default-form-control"
+              value={this.state.amount}
+              onFocus={this.onAmountElementFocus}
+              onChange={this.onAmountElementChange}
+            />
+          </div>
+          <div className="expense-form__input--wrapper">
+            <label>Expense was made at</label>
+            <SingleDatePicker
+              date={this.state.createdAt}
+              onDateChange={this.onDateChange}
+              focused={this.state.calendarFocused}
+              onFocusChange={this.onCalendarFocused}
+              numberOfMonths={1}
+              isOutsideRange={() => false}
+            />
+          </div>
+          <div className="expense-form__input--wrapper">
+            <label>Expense details</label>
+            <textarea
+              name="note"
+              className="default-form-control"
+              placeholder="Place a note for expense (optional)"
+              onInput={this.onStringElementChange}
+            />
+          </div>
+          <div className="expense-form__input--wrapper">
+            <button
+              type="submit"
+              className="default-form-submit"
+            >
+              {(this.props.expense) ? 'Edit expense' : 'Create expense'}
+            </button>
+          </div>
         </form>
       </div>
     );
   }
 }
+
+ExpenseForm.propTypes = {
+  descripition: PropTypes.string,
+  note: PropTypes.string,
+  amount: PropTypes.number,
+  createdAt: PropTypes.number
+};
 
 export default ExpenseForm;

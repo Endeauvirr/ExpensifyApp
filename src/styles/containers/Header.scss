@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 25px;
+  padding: 0 0 0 25px;
   border-bottom: 1px solid $color-light-gray;
 }
 
@@ -32,7 +32,7 @@
       border-left: 1px solid $color-light-gray;
       background: #fff;
       box-shadow: none;
-      transition: all 0.3s linear;
+      transition: color 0.3s linear, box-shadow 0.3s linear;
 
       &:hover {
         box-shadow: 0 5px 10px 0 rgba(0,0,0,0.15);
@@ -40,6 +40,12 @@
 
       a {
         padding: 30px;
+        color: $color-rich-black;
+
+        &.is-active,
+        &:hover {
+          color: $color-vivid-cerulean;
+        }
       }
     }
   }
@@ -54,6 +60,7 @@
       width: auto;
       display: flex;
       align-items: center;
+      margin-right: 20px;
       img {
         width: 50px;
         border-radius: 50%;
@@ -74,6 +81,25 @@
     &__name {
       @include primaryTypeface($weight: 700);
       margin: 0;
+    }
+
+    &__menu {
+      display: flex;
+      margin-left: 20px;
+      border-left: 1px solid $color-light-gray;
+      
+      button {
+        @include primaryTypeface($weight: 300);
+        box-shadow: none;
+        transition: color 0.3s linear, box-shadow 0.3s linear;
+        padding: 0 30px;
+
+        &:hover {
+          color: $color-vivid-burgundy;
+          box-shadow: 0 5px 10px 0 rgba(0,0,0,0.15);
+        }
+      }
+      
     }
   }
 }

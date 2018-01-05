@@ -4,8 +4,13 @@
 @import './base/_variables.scss';
 @import './base/_mixins.scss';
 @import './base/_bootstrap.scss';
+@import './base/_vendors.scss';
 
 @import './components/LoginPage.scss';
+@import './components/ExpensesSummary.scss';
+@import './components/ExpenseListFilter.scss';
+@import './components/ExpenseList.scss';
+@import './components/ExpenseForm.scss';
 
 @import './containers/PrivateRoute.scss';
 @import './containers/Header.scss';

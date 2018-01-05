@@ -1,0 +1,20 @@
+.expenses__summary {
+  p {
+    @include primaryTypeface($weight: 300);
+    text-align: center;
+
+    span {
+      @include primaryTypeface($weight: 700);
+    }
+  }
+
+  &--visible {
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+  &--overall-info {
+    font-size: 0.875em;
+    margin-bottom: 40px;
+    color: $color-prussian-blue;
+  }
+}

@@ -1,31 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import getExpensesTotal from '../selectors/expenses-total';
+import getExpensesTotal, { getExpensesTotalCount } from '../selectors/expenses-total';
 import formatPrice from '../utils/formatPrice';
 import selectExpenses from '../selectors/expenses';
 
-export const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
-  const expensesWord = (expenseCount === 1) ? 'expense' : 'expenses';
+export const ExpensesSummary = (
+  {
+    visibleExpenseCount,
+    visibleExpensesTotal,
+    expensesCount,
+    expensesTotal,
+  }) => {
+  const expensesWord = (visibleExpenseCount === 1) ? 'expense' : 'expenses';
 
   return (
-    <div>
+    <div className="expenses__summary">
       {
-        expenseCount === 0 ? (
-          <p>You do not have any expenses in this time</p>
+        visibleExpenseCount === 0 ? (
+          <p className="expenses__summary--visible">You do not have any expenses in this time.</p>
         ) : (
-          <p>Showing {expenseCount} {expensesWord} with total value of {expensesTotal } </p>
+          <p className="expenses__summary--visible">
+            Showing <span>{visibleExpenseCount} {expensesWord}</span> with total value of <span>{visibleExpensesTotal}</span>
+          </p>
         )
       }
+      <p className="expenses__summary--overall-info">
+        Overall, you have <span>{expensesCount} expenses</span> with total value of <span>{expensesTotal}</span>
+      </p>
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   const visibleExpenses = selectExpenses(state.expenses, state.filters);
+  const expensesCount = getExpensesTotalCount(state.expenses);
 
   return {
-    expenseCount: visibleExpenses.length,
-    expensesTotal: formatPrice(getExpensesTotal(visibleExpenses))
+    visibleExpenseCount: visibleExpenses.length,
+    visibleExpensesTotal: formatPrice(getExpensesTotal(visibleExpenses)),
+    expensesCount,
+    expensesTotal: formatPrice(getExpensesTotal(state.expenses)),
   };
 };
 

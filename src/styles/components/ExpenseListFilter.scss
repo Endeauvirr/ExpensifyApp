@@ -1,0 +1,25 @@
+.expenses__list-filters {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $color-light-gray;
+  padding-bottom: 40px;
+}
+
+.list-filter__text {
+  padding: 0 15px;
+  border: 1px solid #cacccd;
+  color: #565a5c;
+
+  &:disabled {
+    background: $color-light-gray;
+    cursor: not-allowed;
+  }
+}
+.list-filter__type {
+  margin: 0 30px;
+
+  &:disabled {
+    background: $color-light-gray;
+    cursor: not-allowed;
+  }
+}

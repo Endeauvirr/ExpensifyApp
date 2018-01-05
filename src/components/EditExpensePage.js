@@ -10,11 +10,16 @@ export class EditExpensePage extends React.Component {
   }
   render() {
     return (
-      <div>
-        <ExpenseForm
-          expense={this.props.expense}
-          onSubmit={this.onSubmit}
-        />
+      <div className="container">
+        <section className="expense-form__wrapper">
+          <header className="expense-form__header">
+            <h2>Edit expense</h2>
+          </header>
+          <ExpenseForm
+            expense={this.props.expense}
+            onSubmit={this.onSubmit}
+          />
+        </section>
       </div>
     );
   }

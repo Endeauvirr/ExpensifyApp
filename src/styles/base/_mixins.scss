@@ -87,3 +87,12 @@
 .button-primary {
   @include button-generator();
 }
+
+
+//
+// GRID ELEMENTS
+//
+.container {
+  width: 80%;
+  margin: 0 auto;
+}

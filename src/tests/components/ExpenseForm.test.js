@@ -35,7 +35,7 @@ test('[Event, input] Should set new description on input change', () => {
 
   const wrapper = shallow(<ExpenseForm />);
 
-  wrapper.find('input').at(0).simulate('input', {
+  wrapper.find('input').at(0).simulate('change', {
     target: {
       name: fieldName,
       value: fieldValue
