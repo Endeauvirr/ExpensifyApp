@@ -39,6 +39,18 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
       endDate: action.endDate
     };
   }
+  case 'SORT_BY_VALUE_ASCENDING': {
+    return {
+      ...state,
+      sortBy: 'value_ascending'
+    };
+  }
+  case 'SORT_BY_VALUE_DESCENDING': {
+    return {
+      ...state,
+      sortBy: 'value_descending'
+    };
+  }
   default:
     return state;
   }

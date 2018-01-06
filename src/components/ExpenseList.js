@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
+import { sortByValueAscending, sortByValueDescending } from '../actions/filters';
 
 export const ExpenseList = (props) => (
   <div className="expenses__list">
@@ -9,9 +10,22 @@ export const ExpenseList = (props) => (
       <span className="header--label">
         Expense
       </span>
-      <span className="header--label">
+      <button
+        className="header--label with-indicator"
+        onClick={() => {
+          if (props.sortBy === 'value_ascending') {
+            props.sortByValueDescending();
+          } else {
+            props.sortByValueAscending();
+          }
+        }}
+      >
         Value
-      </span>
+        <span
+          className={`value-indicator ${props.sortBy}`}
+        >
+        </span>
+      </button>
       <span className="header--label">
         Action
       </span>
@@ -34,9 +48,17 @@ export const ExpenseList = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    expenses: selectExpenses(state.expenses, state.filters)
+    expenses: selectExpenses(state.expenses, state.filters),
+    sortBy: state.filters.sortBy
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sortByValueAscending: () => dispatch(sortByValueAscending()),
+    sortByValueDescending: () => dispatch(sortByValueDescending())
   };
 };
 
 
-export default connect(mapStateToProps)(ExpenseList);
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseList);

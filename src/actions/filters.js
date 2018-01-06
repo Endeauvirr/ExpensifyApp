@@ -20,3 +20,11 @@ export const setEndDate = (endDate = undefined) => ({
   type: 'SET_END_DATE',
   endDate
 });
+
+export const sortByValueAscending = () => ({
+  type: 'SORT_BY_VALUE_ASCENDING'
+});
+
+export const sortByValueDescending = () => ({
+  type: 'SORT_BY_VALUE_DESCENDING'
+});

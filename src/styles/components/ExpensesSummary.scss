@@ -8,13 +8,16 @@
     }
   }
 
+  &--wrapper {
+    margin-bottom: 40px;
+  }
   &--visible {
     font-size: 2em;
     margin-bottom: 0;
   }
   &--overall-info {
     font-size: 0.875em;
-    margin-bottom: 40px;
+    margin-bottom: 0;
     color: $color-prussian-blue;
   }
 }

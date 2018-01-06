@@ -17,16 +17,20 @@ export const ExpensesSummary = (
     <div className="expenses__summary">
       {
         visibleExpenseCount === 0 ? (
-          <p className="expenses__summary--visible">You do not have any expenses in this time.</p>
+          <div className="expenses__summary--wrapper">
+            <p className="expenses__summary--visible">You do not have any expenses in this time.</p>
+            <p className="expenses__summary--overall-info">
+              Overall, you have <span>{expensesCount} expenses</span> with total value of <span>{expensesTotal}</span>
+            </p>
+          </div>
         ) : (
-          <p className="expenses__summary--visible">
-            Showing <span>{visibleExpenseCount} {expensesWord}</span> with total value of <span>{visibleExpensesTotal}</span>
-          </p>
+          <div className="expenses__summary--wrapper">
+            <p className="expenses__summary--visible">
+              Showing <span>{visibleExpenseCount} {expensesWord}</span> with total value of <span>{visibleExpensesTotal}</span>
+            </p>
+          </div>
         )
       }
-      <p className="expenses__summary--overall-info">
-        Overall, you have <span>{expensesCount} expenses</span> with total value of <span>{expensesTotal}</span>
-      </p>
     </div>
   );
 };
